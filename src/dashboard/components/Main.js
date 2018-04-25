@@ -11,6 +11,7 @@ import Faults          from './Faults'
 import LastDays        from './LastDays'
 import TotalWeek       from './TotalWeek'
 import BookStatus      from './BookStatus'
+import MeanProgress    from './MeanProgress'
 import FaultsWeekDay   from './FaultsWeekDay'
 import SpeculateActual from './SpeculateActual'
 
@@ -36,6 +37,9 @@ class Main extends Component {
             <Faults />
             <FaultsWeekDay />
           </div>
+
+          <div className="clearfix my-3"></div>
+          <MeanProgress />
 
           <div className="clearfix my-3"></div>
           <div className="row">
