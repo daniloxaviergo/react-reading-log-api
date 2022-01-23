@@ -1,0 +1,44 @@
+version: "3.4"
+volumes:
+  database:
+    driver: local
+  redis:
+    driver: local
+  gems_volume_log:
+    driver: local
+
+services:
+  frontend:
+    volumes:
+      - ./:/app
+    command: npm run start
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: development
+      REACT_APP_API_ROOT: http://localhost:7107
+      PORT: 7108
+    ports:
+      - 7108:7108
+
+  backend:
+    volumes:
+      - ../reading-log-api:/app
+      - ./bin/dockerize:/app/dockerize
+      - gems_volume_log:/usr/local/bundle
+    command: bundle exec rails s -p 7107 -b '0.0.0.0'
+    build:
+      context: ../reading-log-api
+      dockerfile: Dockerfile
+    ports:
+      - 7107:7107
+    environment:
+      RAILS_ENV: development
+      RAKE_ENV: development
+      DB_DATABASE: d5n37g91eduki2
+      DB_HOST: ec2-54-237-143-127.compute-1.amazonaws.com
+      DB_USER: jkprducawszuzs
+      DB_PASS: 02736cbe607ab041bde8e4e735fd3f6af16a8b11d6580c692fc8d519b97ffb72
+    expose:
+      - 7107
