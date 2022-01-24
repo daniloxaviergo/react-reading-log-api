@@ -36,9 +36,9 @@ services:
     environment:
       RAILS_ENV: development
       RAKE_ENV: development
-      DB_DATABASE: d5n37g91eduki2
-      DB_HOST: ec2-54-237-143-127.compute-1.amazonaws.com
-      DB_USER: jkprducawszuzs
-      DB_PASS: 02736cbe607ab041bde8e4e735fd3f6af16a8b11d6580c692fc8d519b97ffb72
+      DB_DATABASE: aaa
+      DB_HOST: aaa
+      DB_USER: aaa
+      DB_PASS: aaa
     expose:
       - 7107
