@@ -8,6 +8,21 @@ volumes:
     driver: local
 
 services:
+  postgres:
+      image: postgres:10.5
+      restart: always
+      environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+      logging:
+        options:
+          max-size: 10m
+          max-file: "3"
+      ports:
+        - "5438:5432"
+      volumes: 
+        - database:/var/lib/postgresql/data
+
   frontend:
     volumes:
       - ./:/app
@@ -25,9 +40,9 @@ services:
   backend:
     volumes:
       - ../reading-log-api:/app
-      - ./bin/dockerize:/app/dockerize
       - gems_volume_log:/usr/local/bundle
-    command: bundle exec rails s -p 7107 -b '0.0.0.0'
+      - /home/danilo/scripts/ruby/leituras.txt:/leituras.txt
+    command: ./startup_local.sh
     build:
       context: ../reading-log-api
       dockerfile: Dockerfile
@@ -36,9 +51,9 @@ services:
     environment:
       RAILS_ENV: development
       RAKE_ENV: development
-      DB_DATABASE: aaa
-      DB_HOST: aaa
-      DB_USER: aaa
-      DB_PASS: aaa
+      DB_DATABASE: development
+      DB_HOST: postgres
+      DB_USER: postgres
+      DB_PASS: postgres
     expose:
       - 7107

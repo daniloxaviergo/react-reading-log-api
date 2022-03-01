@@ -11,7 +11,7 @@ class LastDays extends Component {
     super()
     this.toggle = this.toggle.bind(this)
     this.state = {
-      activeTab: '1',
+      activeTab: '5',
       style: {
         display: 'none'
       }
