@@ -11,7 +11,7 @@ class LastDays extends Component {
     super()
     this.toggle = this.toggle.bind(this)
     this.state = {
-      activeTab: '1',
+      activeTab: '5',
       style: {
         display: 'none'
       }
@@ -30,6 +30,13 @@ class LastDays extends Component {
         <Card style={this.state.style}>
           <CardHeader>
             <Nav tabs className="card-header-tabs">
+              <NavItem>
+                <NavLink
+                  className={classnames({ active: this.state.activeTab === '5' })}
+                  onClick={() => { this.toggle('5'); }}>
+                  1 day
+                </NavLink>
+              </NavItem>
               <NavItem>
                 <NavLink
                   className={classnames({ active: this.state.activeTab === '1' })}
@@ -62,6 +69,11 @@ class LastDays extends Component {
           </CardHeader>
 
           <TabContent activeTab={this.state.activeTab}>
+            <TabPane tabId="5">
+              <Fade in={this.state.activeTab === '5'}>
+                <List type={'5'} parent={this}/>
+              </Fade>
+            </TabPane>
             <TabPane tabId="1">
               <Fade in={this.state.activeTab === '1'}>
                 <List type={'1'} parent={this}/>

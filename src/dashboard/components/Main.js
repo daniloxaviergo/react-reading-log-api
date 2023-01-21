@@ -5,15 +5,16 @@ import thunk from 'redux-thunk';
 
 import rootReducer from '../reducers'
 
-import Day             from './Day'
-import Menu            from '../../base/components/Menu'
-import Faults          from './Faults'
-import LastDays        from './LastDays'
-import TotalWeek       from './TotalWeek'
-import BookStatus      from './BookStatus'
-import MeanProgress    from './MeanProgress'
-import FaultsWeekDay   from './FaultsWeekDay'
-import SpeculateActual from './SpeculateActual'
+import Day               from './Day'
+import Menu              from '../../base/components/Menu'
+import Faults            from './Faults'
+import LastDays          from './LastDays'
+import TotalWeek         from './TotalWeek'
+import BookStatus        from './BookStatus'
+import MeanProgress      from './MeanProgress'
+import FaultsWeekDay     from './FaultsWeekDay'
+import SpeculateActual   from './SpeculateActual'
+import LastYearTotalWeek from './LastYearTotalWeek'
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
@@ -46,7 +47,10 @@ class Main extends Component {
             <LastDays />
             <BookStatus />
           </div>
-          
+
+          <div className="clearfix my-3"></div>
+          <LastYearTotalWeek />
+
           <div className="clearfix my-3"></div>
           <TotalWeek />
         </div>
